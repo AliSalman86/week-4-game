@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+    var playerChar, enemyChar;
     var gameEvent = {
         slotNo: [0, 1, 2, 3],
         charName: ['Earth', 'Water', 'Air','Fire' ],
@@ -10,6 +10,7 @@ $(document).ready(function() {
         enemySelected: false,
 
         gameInit: function() {
+            $('#instructions').html('WHEN YOU READY, SELECT YOUR ELEMENT');
             for (var i = 0; i < this.slotNo.length; i++) {
                 var playCard = $('<div>');
                     playCard.attr({
@@ -25,10 +26,27 @@ $(document).ready(function() {
                     $('#'+ this.slotNo[i]).append(img)
                     $('#'+ this.slotNo[i]).append('<br>HP = '+ this.charHealth[i]);
                     $('#'+ this.slotNo[i]).append('<br>AP = '+ this.attackPower[i]);
-            }
+            } // loop end
         } //End of function gameInit
-    } // End of Object gameEvent
+        // function
+    }; // End of Object gameEvent
     gameEvent.gameInit();
+    $('.player').on('click', function() {
+        if (gameEvent.playerSelected == false) {
+            playerChar = $(this).html();
+            $('#playerGround').addClass('btn player text-center active-player')
+            $('#playerGround').html(playerChar);
+            gameEvent.playerSelected = true;
+            $(this).remove();
+        }
+        else if ((gameEvent.playerSelected == true) && (gameEvent.enemySelected == false)) {
+            enemyChar = $(this).html();
+            $('#enemyGround').addClass('btn player text-center active-enemy')
+            $('#enemyGround').html(enemyChar);
+            gameEvent.enemySelected = true;
+            $(this).remove();
+        }
+    });
 }); //End of Window onload
 
 
