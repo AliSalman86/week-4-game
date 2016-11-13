@@ -12,23 +12,24 @@
     <div class="container">
         <!-- container for the characters -->
         <div class="row menu">
-            <h1 id="instructions" class="instructions text-center"></h1>
             <div id="charsPool" class="text-center"></div>
         </div>
 
         <div class="row battleGround">
             <div id="playerCorner" class="col-md-4 text-center">
-                <p>Your Element:</p>
                 <div id="playerGround"></div>
             </div>
-
-            <div id="enemyCorner" class="col-md-push-4 col-md-4 text-center">
-                <p>Enemy Element:</p>
+            <div id="instructions" class="col-md-4 instructions text-center"></div>
+            <div id="enemyCorner" class="col-md-4 text-center">
                 <div id="enemyGround"></div>
             </div>
         </div>
-<script src = "assets/javascript/game.js"></script>
 
+        <div class="row text-center gameControl">
+            <button type="button" id="attack" class="btn btn-success attack">Attack</button>
+            <button type="button" id="reset" class="btn btn-primary reset">Play Again</div>
+        </div>
     </div>
+    <script src = "assets/javascript/game.js"></script>
 </body>
 </html>
