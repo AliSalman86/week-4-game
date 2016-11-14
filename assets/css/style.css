@@ -3,6 +3,7 @@ body {
     padding: 0;
     background: url('../images/mainbg.jpg');
     background-size: cover;
+    font-family: 'Gloria Hallelujah', cursive;
 }
 
 #charsPool {
@@ -11,7 +12,7 @@ body {
     width: 600px;
     height: 275px;
     padding: 25px;
-    margin: 0 auto;
+    margin: 20px auto;
     border: #4aaaa5 1px solid;
     border-radius: 2%;
 }
@@ -37,8 +38,7 @@ body {
 }
 
 p {
-    margin: 0;
-    padding: 0;
+    padding-top: 10px;
 }
 
 .battleGround {
@@ -53,6 +53,19 @@ button {
     width: 95px;
 }
 
-.lostEnemy {
+.lost {
     opacity: 0;
+}
+
+.instructions {
+    height: 217px;
+    background: #fff;
+    opacity: 0.8;
+}
+
+.instructions p {
+    padding: 0;
+    margin: 0;
+    vertical-align: middle;
+    padding-top: 80px;
 }
