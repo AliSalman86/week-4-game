@@ -14,6 +14,8 @@ $(document).ready(function() {
 
         gameInit: function() {
             $('#instructions').html('<p>SELECT YOUR POWER AND LET THE TOURNMENT BEGIN</p>');
+            // create and append the playing cards to the characters pool
+            $('#charsPool').empty(); // recreate the pool for players whenever play again pressed
             for (var i = 0; i < this.slotNo.length; i++) {
                 var playCard = $('<div>');
                     playCard.attr({
@@ -48,24 +50,23 @@ $(document).ready(function() {
         }, // End of attack function
         youLost: function() {
             $('#instructions').html('<p>YOU LOST THE TOURNMENT, PRESS PLAY AGAIN TO START AGAIN</p>');
-            $('.active-player').addClass('lost');
+            $('#playerGround').empty();
             this.playerSelected = false;
         }, // End of Losing function
         youWon: function() {
             if (this.enemies > 0) {
                 $('#instructions').html('<p>YOU WON A BATTLE, CHOOSE ANOTHER OPPONENT</p>');
-                $('.active-enemy').addClass('lost');
             }
             else if (this.enemies == 0) {
                 $('#instructions').html('<p>YOU WON THE TOURNMENT, YOU ARE THE MASTER OF THE FOUR ELEMENTS</p>');
-                $('.active-enemy').addClass('lost');
-                this.playerSelected = false;
             }
+        $('#enemyGround').empty();
         this.enemySelected = false;
 
         }, // End of Winning function
         reset: function() {
-            $('.active-player').addClass('lost');
+            $('#enemyGround').empty();
+            $('#playerGround').empty();
             this.newHealth = [120, 100, 150, 180];
             this.attackPower = [8, 5, 10, 20];
             this.playerSelected = false;
@@ -81,7 +82,6 @@ $(document).ready(function() {
     $('.player').on('click', function() {
         if (gameEvent.playerSelected == false) {
             playerChar = $(this).html();
-            $('.active-player').removeClass('lost');
             $('#playerGround').addClass('btn player text-center active-player')
             $('#playerGround').html(playerChar);
             gameEvent.playerSelected = true;
@@ -92,7 +92,6 @@ $(document).ready(function() {
         }
         else if ((gameEvent.playerSelected == true) && (gameEvent.enemySelected == false)) {
             enemyChar = $(this).html();
-            $('.active-enemy').removeClass('lost');
             $('#enemyGround').addClass('btn player text-center active-enemy')
             $('#enemyGround').html(enemyChar);
             gameEvent.enemySelected = true;
